@@ -1,3 +1,6 @@
+# tc:o(n), sc:o(n)
+# uses stack to ensure that every item is considered once
+
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
         ans = [0] * len(temperatures)
