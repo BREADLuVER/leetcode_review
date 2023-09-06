@@ -1,5 +1,8 @@
 # tc:o(n), sc:o(n)
-# uses stack to ensure that every item is considered once
+# uses stack to ensure that every item is only considered once
+
+# loop through every element, save it on stack; pop the top temp off and calculate the distance 
+# after encountering the closest higher temp, continue with the new top temp if it's lower
 
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
