@@ -1,0 +1,16 @@
+# set head to next, set next to previous
+# null -> 1 -> 2 -> 3 -> next
+# pre -> 3 -> 2 -> 1 -> null
+
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        current = head
+        prev = None
+        nxt = None
+        while (current):
+            nxt = current.next
+            current.next = prev
+            prev = current
+            current = nxt
+        return prev
+        
