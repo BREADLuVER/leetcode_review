@@ -1,1 +1,17 @@
+#use max heap (negative list) in combination with heappop and heappush
 
+class Solution:
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        s = [-stone for stone in stones]
+        heapq.heapify(s)
+        while len(s) > 1:
+            a = -heapq.heappop(s)
+            b = -heapq.heappop(s)
+            if a - b == 0:
+                continue
+            heapq.heappush(s, -(a - b))
+        if s:
+            return -s[0]
+        else:
+            return 0
+        
