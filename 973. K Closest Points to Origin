@@ -1,0 +1,10 @@
+#utilize heapq.nsmallest to extract the sublist with the smallest distances
+
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        if len(points) == 1:
+            return points
+        dist = [(math.sqrt(x**2 + y**2), (x,y)) for x,y in points]
+        p = heapq.nsmallest(k, dist, key=lambda x: x[0])
+        ans = [list(point[1]) for point in p]
+        return ans
