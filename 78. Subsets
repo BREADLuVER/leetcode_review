@@ -1,0 +1,12 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        ans = []
+        self.dfs(sorted(nums), ans, [])
+        return ans
+
+    def dfs(self, nums, ans, temp):
+        if temp not in ans:
+            ans.append(temp)
+        
+        for num in range(len(nums)):
+            self.dfs(nums[num+1:], ans, temp+[nums[num]])
