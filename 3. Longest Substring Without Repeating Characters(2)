@@ -1,0 +1,14 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        e = 0
+        ans = []
+        l = 0
+        for index in range(len(s)):
+            if s[index] in ans:
+                dup = ans.index(s[index])
+                ans = ans[dup+1:]
+                ans.append(s[index])
+            else:
+                ans.append(s[index])
+                l = max(l, len(ans))
+        return l
