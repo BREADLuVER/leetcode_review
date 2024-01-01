@@ -34,13 +34,22 @@ class Ticketsystem:
                     return resolved_ticket
         else:
             return None
+        
+    def latest(self, customer_name):
+        if customer_name in self.tickets:
+            l = self.tickets[customer_name][-1]
+            print(f"Latest ticket for {customer_name} Ticket ID {l['ticket_id']}")
+        else:
+            print(f"No ticket found for {customer_name}.")  
 
 ticket_system = Ticketsystem()
 ticket_system.create_ticket("John Doe")
+ticket_system.create_ticket("Alice Smith")
 ticket_system.create_ticket("Alice Smith")
 
 # Retrieve a specific ticket
 ticket = ticket_system.get_ticket("John Doe", 1)
 r = ticket_system.resolve_ticket("John Doe", 1)
+ticket_system.latest("Alice Smith")
 print(ticket if ticket else "Ticket not found")
 
