@@ -24,6 +24,16 @@ class Ticketsystem:
         else:
             return None
 
+    def resolve_ticket(self, customer_name, ticket_id):
+        if customer_name in self.tickets:
+            for t in self.tickets[customer_name]:
+                if t["ticket_id"] == ticket_id:
+                    resolved_ticket = t
+                    self.tickets[customer_name].remove(t)
+                    print(f"This is the tickert removed for customer {customer_name}.")
+                    return resolved_ticket
+        else:
+            return None
 
 ticket_system = Ticketsystem()
 ticket_system.create_ticket("John Doe")
@@ -31,5 +41,6 @@ ticket_system.create_ticket("Alice Smith")
 
 # Retrieve a specific ticket
 ticket = ticket_system.get_ticket("John Doe", 1)
+r = ticket_system.resolve_ticket("John Doe", 1)
 print(ticket if ticket else "Ticket not found")
 
