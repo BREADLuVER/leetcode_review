@@ -1,0 +1,11 @@
+class Solution:
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        car = sorted(zip(position, speed), reverse= True)
+        fleet = []
+        for pos, dis in car:
+            step = (target-pos)/dis
+            if not fleet:
+                fleet.append(step)
+            elif step > fleet[-1]:
+                fleet.append(step)
+        return len(fleet)
