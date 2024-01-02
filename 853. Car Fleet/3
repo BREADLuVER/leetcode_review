@@ -1,0 +1,14 @@
+class Solution:
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        car = sorted(zip(position, speed), reverse= True)
+        fleet = 0
+        bot = 0
+        for pos, dis in car:
+            step = (target-pos)/dis
+            if fleet == 0:
+                fleet += 1
+                bot = step
+            elif step > bot:
+                fleet += 1
+                bot = step
+        return fleet
