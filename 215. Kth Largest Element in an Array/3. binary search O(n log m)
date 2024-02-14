@@ -1,0 +1,16 @@
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        low, high = 1, max(nums)
+    
+        while low <= high:
+            mid = (low + high) // 2
+            print(f'mid:', mid)
+            count = sum(num >= mid for num in nums)
+            print(f'count:', count)
+            if count >= k:
+                answer = mid  # Potential answer found
+                low = mid + 1  # Look for a potentially higher answer
+            else:
+                high = mid - 1  # Look for a lower answer
+                
+        return answer
